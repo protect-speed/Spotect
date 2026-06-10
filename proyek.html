@@ -118,7 +118,6 @@ Lihat Detail
 <div class="card">
 
 <video
-autoplay
 muted
 loop
 playsinline
@@ -162,6 +161,30 @@ Akan ditambahkan di masa depan.
 </div>
 
 </div>
+
+<script>
+
+const videos = document.querySelectorAll("video");
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.play();
+}else{
+entry.target.pause();
+}
+
+});
+},{
+threshold:0.6
+});
+
+videos.forEach(video=>{
+observer.observe(video);
+});
+
+  </script>
 
 </body>
 </html>
